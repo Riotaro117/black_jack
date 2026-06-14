@@ -1,0 +1,21 @@
+{
+    "name": "root/html",
+    "version": "2.0.0",
+    "autoload": {
+        "psr-4": {
+            "Root\\Html\\": "src/"
+        }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0",
+        "phpmd/phpmd" : "@stable",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^13.1"
+    },
+    "scripts": {
+        "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml",
+        "phpmd": "./vendor/bin/phpmd . text phpmd.xml --suffixes php --exclude vendor",
+        "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon",
+        "phpunit": "./vendor/bin/phpunit"
+    }
+}
