@@ -1,12 +1,14 @@
 <?php
+namespace BlackJack;
+
 
 require_once(__DIR__ . '/Card.php');
 
 class Deck
 {
   public const ALL_SUITS = ['ハート', 'クラブ', 'スペード', 'ダイヤ'];
-  public const ALL_NUMBERS = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-  public $cards = [];
+  public const ALL_NUMBERS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  public $cards = []; // 本来はprivateが望ましい
 
   public function __construct()
   {
@@ -28,6 +30,14 @@ class Deck
     return $this->cards;
   }
 
-  public function drawCard() {}
-  public function notDrawCard() {}
+  public function drawCard(): Card
+  {
+    if (count($this->cards) === 0) {
+      // ロジックの例外エラー
+      throw new \LogicException('山札がありません');
+    }
+    // 山札の一番上からカードを取り出す
+    $draw_card = array_pop($this->cards);
+    return $draw_card;
+  }
 }
