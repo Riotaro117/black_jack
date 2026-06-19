@@ -23,6 +23,13 @@ class PlayerA extends Player
     return;
   }
 
+  // 手札の点数を合計する
+  public function totalScore(): int
+  {
+    $total_score = new TotalScore();
+    return $total_score->totalScore($this->player_a_hand);
+  }
+
   // 直前に加えたカードの情報を取得する
   public function getPreviousCard(): string
   {
