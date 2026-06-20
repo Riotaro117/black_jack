@@ -15,6 +15,12 @@ class Dealer
     return $deck->shuffleDeck();
   }
 
+  // プレイヤーの名前を宣言する
+  public function stateMyName(): string
+  {
+    return 'ディーラー';
+  }
+
   // 手札の点数を合計する
   public function totalScore(): int
   {
