@@ -5,8 +5,10 @@ namespace BlackJack;
 require_once(__DIR__ . '/Deck.php');
 abstract class Player
 {
+  // プレイヤーの名前を宣言する
+  abstract public function stateMyName(): string;
   // 手札にカードを1枚加える
-  abstract public function addCardMyHand();
+  abstract public function addCardMyHand(): void;
   // 直前に加えたカードの情報を取得する
-  abstract public function getPreviousCard();
+  abstract public function getPreviousCard(): Card;
 }

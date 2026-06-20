@@ -9,6 +9,12 @@ class PlayerA extends Player
 
   public $player_a_hand = [];
 
+  // プレイヤーの名前を宣言する
+  public function stateMyName(): string
+  {
+    return 'あなた';
+  }
+
   // 手札にカードを1枚加える
   public function addCardMyHand(): void
   {
@@ -31,7 +37,7 @@ class PlayerA extends Player
   }
 
   // 直前に加えたカードの情報を取得する
-  public function getPreviousCard(): string
+  public function getPreviousCard(): Card
   {
     if ($this->player_a_hand === []) {
       throw new \LogicException('手札にカードがありません。');

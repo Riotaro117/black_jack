@@ -2,6 +2,7 @@
 
 namespace BlackJack\Tests;
 
+use BlackJack\Card;
 use BlackJack\PlayerA;
 use PHPUnit\Framework\TestCase;
 
@@ -27,8 +28,9 @@ class PlayerATest extends TestCase
   public function testGetPreviousCard(): void
   {
     $player = new PlayerA();
-    $player->player_a_hand = ['ダイヤK'];
+    $card = new Card('ハート', 'K');
+    $player->player_a_hand = [$card];
     $previous_card = $player->getPreviousCard();
-    $this->assertSame('ダイヤK', $previous_card);
+    $this->assertSame($card, $previous_card);
   }
 }
