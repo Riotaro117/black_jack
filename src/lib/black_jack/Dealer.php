@@ -46,6 +46,16 @@ class Dealer
     return $previous_card;
   }
 
+  // ディーラーが2枚目に引いたカードを宣言するかどうか
+  public function whetherOrNotToGetSecondCard(string $time): bool
+  {
+    if ($time === 'first') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   // 合計が17点以上になるまでカードを引き続ける
   public function keepDrawing(): void
   {
