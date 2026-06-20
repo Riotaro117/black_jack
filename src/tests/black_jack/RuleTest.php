@@ -22,7 +22,7 @@ class RuleTest extends TestCase
     $player->player_a_hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
     $rule = new Rule();
 
-    $this->assertSame('あなた', $rule->checkMoreThan21Points($dealer, $player));
+    $this->assertSame('player', $rule->checkMoreThan21Points($dealer, $player));
   }
   public function testCheckNotOverCloseTo21Points(): void
   {
@@ -33,6 +33,6 @@ class RuleTest extends TestCase
     $player->player_a_hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
     $rule = new Rule();
 
-    $this->assertSame('ディーラー', $rule->checkNotOverCloseTo21Points($dealer, $player));
+    $this->assertSame('dealer', $rule->checkNotOverCloseTo21Points($dealer, $player));
   }
 }

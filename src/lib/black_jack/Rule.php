@@ -13,9 +13,9 @@ class Rule
     $dealer_total_score = $dealer->totalScore();
     $player_total_score = $player->totalScore();
     if ($dealer_total_score > 21) {
-      return 'あなた';
+      return 'player';
     } elseif ($player_total_score > 21) {
-      return 'ディーラー';
+      return 'dealer';
     } else {
       return 'continue';
     }
@@ -27,9 +27,9 @@ class Rule
     $dealer_total_score = $dealer->totalScore();
     $player_total_score = $player->totalScore();
     if ((21 - $dealer_total_score) > (21 - $player_total_score)) {
-      return 'あなた';
+      return 'player';
     } elseif ((21 - $dealer_total_score) < (21 - $player_total_score)) {
-      return 'ディーラー';
+      return 'dealer';
     } else {
       return 'continue';
     }
