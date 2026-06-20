@@ -13,6 +13,22 @@ require_once(__DIR__ . '/../../lib/black_jack/Rule.php');
 
 class RuleTest extends TestCase
 {
+  // Yesならカードを追加で引く
+  public function testAddAnotherCard(): void
+  {
+    $player = new PlayerA();
+    $rule = new Rule();
+    $rule->addAnotherCard('Y', $player);
+    $this->assertSame(1, count($player->player_a_hand));
+  }
+  // Noならカードを追加で引かない
+  public function testANotAddAnotherCard(): void
+  {
+    $player = new PlayerA();
+    $rule = new Rule();
+    $rule->addAnotherCard('N', $player);
+    $this->assertSame(0, count($player->player_a_hand));
+  }
   public function testCheckMoreThan21Points(): void
   {
     // ディーラーが21点以上になってしまったとき
@@ -22,7 +38,7 @@ class RuleTest extends TestCase
     $player->player_a_hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
     $rule = new Rule();
 
-    $this->assertSame('player', $rule->checkMoreThan21Points($dealer, $player));
+    $this->assertSame('player', $rule->checkNotOverCloseTo21Points($dealer, $player));
   }
   public function testCheckNotOverCloseTo21Points(): void
   {
