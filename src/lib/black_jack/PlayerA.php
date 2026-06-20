@@ -23,12 +23,6 @@ class PlayerA extends Player
     $this->player_a_hand[] = $draw_card;
   }
 
-  // 手札にカードを加えない
-  public function doNotAddCard(): void
-  {
-    return;
-  }
-
   // 手札の点数を合計する
   public function totalScore(): int
   {
@@ -44,5 +38,12 @@ class PlayerA extends Player
     }
     $previous_card = array_pop($this->player_a_hand);
     return $previous_card;
+  }
+
+  // カードを追加で引くかどうかを答える
+  public function decideDrawAnotherCard(): string
+  {
+    //  入力はYかNのみ
+    return trim(fgets(STDIN));
   }
 }
