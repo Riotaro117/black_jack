@@ -18,11 +18,11 @@ class Rule
 
 
   // Yesならカードを追加で引く、Nならカードを引かない
-  public function addAnotherCard(string $response, PlayerA $player): void
+  public function addAnotherCard(string $response, PlayerA $player, Deck $deck): void
   {
     // Playerは外部からの要素なので新規に作成すると別のプレイヤーになってしまう
     if ($response === 'Y') {
-      $player->addCardMyHand();
+      $player->addCardMyHand($deck);
     } else {
       return;
     }
