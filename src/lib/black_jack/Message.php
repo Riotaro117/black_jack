@@ -11,7 +11,7 @@ class Message
   // 直前に引いたカードのメッセージを表示
   public function drawCardMessage(PlayerA | Dealer $player): string
   {
-    $player_name = $player->stateMyName();
+    $player_name = $player->getMyName();
     $previous_card = $player->getPreviousCard();
 
     return "{$player_name}の引いたカードは{$previous_card->getSuit()}の{$previous_card->getNumber()}です。";
@@ -41,7 +41,7 @@ class Message
   // プレイヤーとディーラーの最終得点を表示するメッセージ
   public function pointMessage(PlayerA |Dealer $player): string
   {
-    $player_name = $player->stateMyName();
+    $player_name = $player->getMyName();
     $total_score = $player->totalScore();
 
     return "{$player_name}の得点は{$total_score}です。";
