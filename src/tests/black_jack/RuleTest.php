@@ -4,6 +4,7 @@ namespace BlackJack\Tests;
 
 use BlackJack\Card;
 use BlackJack\Dealer;
+use BlackJack\Deck;
 use BlackJack\PlayerA;
 use BlackJack\Rule;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +19,8 @@ class RuleTest extends TestCase
   {
     $player = new PlayerA();
     $rule = new Rule();
-    $rule->addAnotherCard('Y', $player);
+    $deck = new Deck();
+    $rule->addAnotherCard('Y', $player,$deck);
     $this->assertSame(1, count($player->player_a_hand));
   }
   // Noならカードを追加で引かない
@@ -26,7 +28,8 @@ class RuleTest extends TestCase
   {
     $player = new PlayerA();
     $rule = new Rule();
-    $rule->addAnotherCard('N', $player);
+    $deck = new Deck();
+    $rule->addAnotherCard('N', $player,$deck);
     $this->assertSame(0, count($player->player_a_hand));
   }
   public function testCheckMoreThan21Points(): void

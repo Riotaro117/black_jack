@@ -28,7 +28,7 @@ class MessageTest extends TestCase
     $message = new Message();
     $dealer = new Dealer();
     $dealer->dealer_hand = [new Card('ハート', 'A')];
-    $this->assertSame('ディーラーの引いた2枚目のカードは分かりません。', $message->dealerDrawSecondCardMessage($dealer, 'first'));
+    $this->assertSame('ディーラーの引いた2枚目のカードは分かりません。', $message->dealerDrawSecondCardMessage($dealer, 'second'));
   }
 
   // プレイヤーの得点を表示してカードを引くかメッセージを表示

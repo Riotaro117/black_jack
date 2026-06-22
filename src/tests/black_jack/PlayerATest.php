@@ -3,6 +3,7 @@
 namespace BlackJack\Tests;
 
 use BlackJack\Card;
+use BlackJack\Deck;
 use BlackJack\PlayerA;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,8 @@ class PlayerATest extends TestCase
   public function testAddCardMyHand(): void
   {
     $player = new PlayerA();
-    $player->addCardMyHand();
+    $deck = new Deck();
+    $player->addCardMyHand($deck);
     $after_number = count($player->player_a_hand);
     $this->assertSame(1, $after_number);
   }
