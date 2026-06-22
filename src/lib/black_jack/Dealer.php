@@ -9,14 +9,13 @@ class Dealer
   public $dealer_hand = [];
 
   // 山札をシャッフルする
-  public function shuffleDeck(): array
+  public function shuffleDeck(Deck $deck): void
   {
-    $deck = new Deck();
-    return $deck->shuffleDeck();
+    $deck->shuffleDeck();
   }
 
   // プレイヤーの名前を宣言する
-  public function stateMyName(): string
+  public function getMyName(): string
   {
     return 'ディーラー';
   }
@@ -29,9 +28,8 @@ class Dealer
   }
 
   // 手札にカードを1枚加える
-  public function addCardMyHand(): void
+  public function addCardMyHand(Deck $deck): void
   {
-    $deck = new Deck();
     $draw_card = $deck->drawCard();
     $this->dealer_hand[] = $draw_card;
   }
@@ -42,7 +40,7 @@ class Dealer
     if ($this->dealer_hand === []) {
       throw new \LogicException('手札にカードがありません。');
     }
-    $previous_card = array_pop($this->dealer_hand);
+    $previous_card = end($this->dealer_hand);
     return $previous_card;
   }
 
@@ -50,18 +48,18 @@ class Dealer
   public function whetherOrNotToGetSecondCard(string $time): bool
   {
     if ($time === 'first') {
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 
   // 合計が17点以上になるまでカードを引き続ける
-  public function keepDrawing(): void
+  public function keepDrawing(Deck $deck): void
   {
     while ($this->totalScore() < 17) {
       // $this->totalScore()で毎回関数を読んでいるので、自動で計算が行われている
-      $this->addCardMyHand();
+      $this->addCardMyHand($deck);
     }
   }
 }
