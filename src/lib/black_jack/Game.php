@@ -42,7 +42,7 @@ class Game
     echo $message->dealerDrawSecondCardMessage($dealer, 'secret') . PHP_EOL;
 
     // 繰り返しの処理
-    $this->whetherPlayerDraw($message, $player, $rule, $deck);
+    $this->whetherPlayerDraw($message, $player, $deck);
 
     // ディーラーが2枚目に引いたカードを表示する
     echo $message->dealerDrawSecondCardMessage($dealer, 'open') . PHP_EOL;
@@ -63,11 +63,9 @@ class Game
     echo $message->resultMessage($result) . PHP_EOL;
 
     echo 'ブラックジャックを終了します。' . PHP_EOL;
-
-    return;
   }
 
-  public function whetherPlayerDraw(Message $message, PlayerA $player, Rule $rule, Deck $deck): void
+  public function whetherPlayerDraw(Message $message, PlayerA $player, Deck $deck): void
   {
     while ($player->totalScore() < 21) {
 
