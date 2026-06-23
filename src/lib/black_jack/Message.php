@@ -18,10 +18,10 @@ class Message
   }
 
   // ディーラーの2枚目に引いたカードのメッセージを表示切り替え
-  public function dealerDrawSecondCardMessage(Dealer $dealer, string $time): string
+  public function dealerDrawSecondCardMessage(Dealer $dealer, string $secret): string
   {
     $previous_card = $dealer->getPreviousCard();
-    $whether_or_not_show_card = $dealer->whetherOrNotToGetSecondCard($time);
+    $whether_or_not_show_card = $dealer->whetherOrNotToGetSecondCard($secret);
 
     if ($whether_or_not_show_card) {
       return "ディーラーの引いた2枚目のカードは{$previous_card->getSuit()}の{$previous_card->getNumber()}です。";
