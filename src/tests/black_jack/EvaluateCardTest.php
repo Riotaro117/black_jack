@@ -11,12 +11,12 @@ require_once(__DIR__ . '/../../lib/black_jack/EvaluateCard.php');
 
 class EvaluateCardTest extends TestCase
 {
-  public function testEvaluateCardPoint(): void
-  {
-    $card1 = new Card('ハート', 'A');
-    $card2 = new Card('スペード', 'K');
-    $evaluate_card = new EvaluateCard();
-    $this->assertSame(1, $evaluate_card->evaluateCardPoint($card1));
-    $this->assertSame(10, $evaluate_card->evaluateCardPoint($card2));
-  }
+    public function testEvaluateCardPoint(): void
+    {
+        $card1 = new Card('ハート', 'A');
+        $card2 = new Card('スペード', 'K');
+        $evaluateCard = new EvaluateCard();
+        $this->assertSame(1, $evaluateCard->evaluateCardPoint($card1));
+        $this->assertSame(10, $evaluateCard->evaluateCardPoint($card2));
+    }
 }

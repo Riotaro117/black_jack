@@ -12,21 +12,21 @@ require_once(__DIR__ . '/../../lib/black_jack/PlayerA.php');
 
 class PlayerATest extends TestCase
 {
-  public function testAddCardMyHand(): void
-  {
-    $player = new PlayerA();
-    $deck = new Deck();
-    $player->addCardMyHand($deck);
-    $after_number = count($player->player_a_hand);
-    $this->assertSame(1, $after_number);
-  }
+    public function testAddCardMyHand(): void
+    {
+        $player = new PlayerA();
+        $deck = new Deck();
+        $player->addCardMyHand($deck);
+        $afterNumber = count($player->hand);
+        $this->assertSame(1, $afterNumber);
+    }
 
-  public function testGetPreviousCard(): void
-  {
-    $player = new PlayerA();
-    $card = new Card('ハート', 'K');
-    $player->player_a_hand = [$card];
-    $previous_card = $player->getPreviousCard();
-    $this->assertSame($card, $previous_card);
-  }
+    public function testGetPreviousCard(): void
+    {
+        $player = new PlayerA();
+        $card = new Card('ハート', 'K');
+        $player->hand = [$card];
+        $previousCard = $player->getPreviousCard();
+        $this->assertSame($card, $previousCard);
+    }
 }
