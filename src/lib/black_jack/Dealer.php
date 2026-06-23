@@ -45,9 +45,9 @@ class Dealer
   }
 
   // ディーラーが2枚目に引いたカードを宣言するかどうか
-  public function whetherOrNotToGetSecondCard(string $time): bool
+  public function whetherOrNotToGetSecondCard(string $secret): bool
   {
-    if ($time === 'first') {
+    if ($secret === 'open') {
       return true;
     } else {
       return false;
