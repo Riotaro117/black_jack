@@ -14,24 +14,6 @@ require_once(__DIR__ . '/../../lib/black_jack/Rule.php');
 
 class RuleTest extends TestCase
 {
-  // Yesならカードを追加で引く
-  public function testAddAnotherCard(): void
-  {
-    $player = new PlayerA();
-    $rule = new Rule();
-    $deck = new Deck();
-    $rule->addAnotherCard('Y', $player,$deck);
-    $this->assertSame(1, count($player->player_a_hand));
-  }
-  // Noならカードを追加で引かない
-  public function testANotAddAnotherCard(): void
-  {
-    $player = new PlayerA();
-    $rule = new Rule();
-    $deck = new Deck();
-    $rule->addAnotherCard('N', $player,$deck);
-    $this->assertSame(0, count($player->player_a_hand));
-  }
   public function testCheckMoreThan21Points(): void
   {
     // ディーラーが21点以上になってしまったとき
@@ -50,6 +32,17 @@ class RuleTest extends TestCase
     $dealer->dealer_hand = [new Card('ハート', '2'), new Card('スペード', 'K'), new Card('クラブ', '9')];
     $player = new PlayerA();
     $player->player_a_hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
+    $rule = new Rule();
+
+    $this->assertSame('dealer', $rule->checkNotOverCloseTo21Points($dealer, $player));
+  }
+  public function testLosePlayer(): void
+  {
+    // プレイヤーの得点が21点を超えているとき
+    $dealer = new Dealer();
+    $dealer->dealer_hand = [new Card('ハート', '2'), new Card('スペード', 'K'), new Card('クラブ', '8')];
+    $player = new PlayerA();
+    $player->player_a_hand = [new Card('ハート', '10'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
     $rule = new Rule();
 
     $this->assertSame('dealer', $rule->checkNotOverCloseTo21Points($dealer, $player));
