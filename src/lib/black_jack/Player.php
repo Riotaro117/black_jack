@@ -9,6 +9,8 @@ abstract class Player
   abstract public function getMyName(): string;
   // 手札にカードを1枚加える
   abstract public function addCardMyHand(Deck $deck): void;
+  // 手札の点数を合計する
+  abstract public function totalScore(): int;
   // 直前に加えたカードの情報を取得する
   abstract public function getPreviousCard(): Card;
 }
