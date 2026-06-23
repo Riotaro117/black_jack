@@ -75,7 +75,7 @@ class Game
       // Yならカードを1枚ひく、Nならカードを引かない
       $response = $player->decideDrawAnotherCard();
 
-      if ($response == 'Y') {
+      if ($response === 'Y') {
         $player->addCardMyHand($deck);
       } else {
         break;
