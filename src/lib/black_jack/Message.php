@@ -8,12 +8,12 @@ use BlackJack\PlayerA;
 class Message
 {
     // 直前に引いたカードのメッセージを表示
-    public function drawCardMessage(PlayerA | Dealer $player): string
+    public function drawCardMessage(CardHolder $cardHolder): string
     {
-        $playerName = $player->getMyName();
-        $previousCard = $player->getPreviousCard();
+        $cardHolderName = $cardHolder->getMyName();
+        $previousCard = $cardHolder->getPreviousCard();
 
-        return "{$playerName}の引いたカードは{$previousCard->getSuit()}の{$previousCard->getNumber()}です。";
+        return "{$cardHolderName}の引いたカードは{$previousCard->getSuit()}の{$previousCard->getNumber()}です。";
     }
 
     // ディーラーの2枚目に引いたカードのメッセージを表示切り替え
@@ -37,12 +37,12 @@ class Message
     }
 
     // プレイヤーとディーラーの最終得点を表示するメッセージ
-    public function pointMessage(PlayerA |Dealer $player): string
+    public function pointMessage(CardHolder $cardHolder): string
     {
-        $playerName = $player->getMyName();
-        $totalScore = $player->totalScore();
+        $cardHolderName = $cardHolder->getMyName();
+        $totalScore = $cardHolder->totalScore();
 
-        return "{$playerName}の得点は{$totalScore}です。";
+        return "{$cardHolderName}の得点は{$totalScore}です。";
     }
 
     // 結果を表示するメッセージ
