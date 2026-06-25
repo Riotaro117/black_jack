@@ -8,6 +8,9 @@ use BlackJack\Deck;
 // ゲーム中カードを持つ人に共通する処理
 interface CardHolder
 {
+    // プレイヤーの名前を宣言する
+    public function getMyName(): string;
+
     // 手札にカードを1枚加える
     public function addCardMyHand(Deck $deck): void;
 
