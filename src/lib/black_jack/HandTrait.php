@@ -4,8 +4,10 @@ namespace BlackJack;
 
 use BlackJack\Card;
 use BlackJack\Deck;
-use BlackJack\TotalScore;
+use BlackJack\EvaluateCard;
 use LogicException;
+
+require_once(__DIR__ . '/EvaluateCard.php');
 
 trait HandTrait
 {
@@ -24,8 +26,22 @@ trait HandTrait
     // 手札の点数を合計する
     public function totalScore(): int
     {
-        $totalScore = new TotalScore();
-        return $totalScore->totalScore($this->hand);
+        $totalScore = 0;
+        $aceCount = 0;
+        $evaluateCard = new EvaluateCard();
+        foreach ($this->hand as $card) {
+            $number = $card->getNumber();
+            if ($number === 'A') {
+                $aceCount += 1;
+            }
+            $totalScore += $evaluateCard->evaluateCardPoint($card);
+        }
+
+        while ($totalScore > 21 && $aceCount > 0) {
+            $totalScore -= 10;
+            $aceCount -= 1;
+        }
+        return $totalScore;
     }
 
     // 直前に加えたカードの情報を取得する
