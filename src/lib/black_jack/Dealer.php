@@ -3,7 +3,6 @@
 namespace BlackJack;
 
 require_once(__DIR__ . '/Deck.php');
-require_once(__DIR__ . '/TotalScore.php');
 require_once(__DIR__ . '/HandTrait.php');
 require_once(__DIR__ . '/CardHolder.php');
 
