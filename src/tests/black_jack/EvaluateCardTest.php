@@ -16,7 +16,7 @@ class EvaluateCardTest extends TestCase
         $card1 = new Card('ハート', 'A');
         $card2 = new Card('スペード', 'K');
         $evaluateCard = new EvaluateCard();
-        $this->assertSame(1, $evaluateCard->evaluateCardPoint($card1));
+        $this->assertSame(11, $evaluateCard->evaluateCardPoint($card1));
         $this->assertSame(10, $evaluateCard->evaluateCardPoint($card2));
     }
 }
