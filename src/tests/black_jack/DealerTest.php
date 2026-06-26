@@ -19,10 +19,9 @@ class DealerTest extends TestCase
         $deck = new Deck();
         $dealer = new Dealer();
         $dealer->hand = [new Card('ハート', 'K'), new Card('ダイヤ', 'Q')];
-        $totalScore = new TotalScore();
-        $beforeScore1 = $totalScore->totalScore($dealer->hand);
+        $beforeScore1 = $dealer->totalScore();
         $dealer->keepDrawing($deck);
-        $afterScore = $totalScore->totalScore($dealer->hand);
+        $afterScore = $dealer->totalScore();
         $this->assertSame($beforeScore1, $afterScore);
 
         // 17点未満ならカードが増える
