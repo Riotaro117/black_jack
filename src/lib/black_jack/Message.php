@@ -2,7 +2,6 @@
 
 namespace BlackJack;
 
-use BlackJack\Dealer;
 use BlackJack\PlayerA;
 
 class Message
@@ -16,16 +15,16 @@ class Message
         return "{$cardHolderName}の引いたカードは{$previousCard->getSuit()}の{$previousCard->getNumber()}です。";
     }
 
-    // ディーラーの2枚目に引いたカードのメッセージを表示切り替え
-    public function dealerDrawSecondCardMessage(Dealer $dealer, string $secret): string
+    // 2枚目に引いたカードのメッセージを表示切り替え
+    public function dealerDrawSecondCardMessage(CardHolder $cardHolder, string $secret): string
     {
-        $previousCard = $dealer->getPreviousCard();
-        $showCard = $dealer->whetherOrNotToGetSecondCard($secret);
+        $previousCard = $cardHolder->getPreviousCard();
+        $showCard = $cardHolder->showSecondCard($secret);
 
         if ($showCard) {
-            return "ディーラーの引いた2枚目のカードは{$previousCard->getSuit()}の{$previousCard->getNumber()}です。";
+            return "{$cardHolder->getMyName()}の引いた2枚目のカードは{$previousCard->getSuit()}の{$previousCard->getNumber()}です。";
         }
-        return "ディーラーの引いた2枚目のカードは分かりません。";
+        return "{$cardHolder->getMyName()}の引いた2枚目のカードは分かりません。";
     }
 
     // プレイヤーの得点を表示してカードを引くかメッセージを表示
@@ -46,13 +45,14 @@ class Message
     }
 
     // 結果を表示するメッセージ
-    public function resultMessage(string $result): string
+    /**
+     * @param array<int,string> $result
+     */
+    public function resultMessage(array $result): string
     {
-        if ($result === 'player') {
-            return 'あなたの勝ちです';
-        } elseif ($result === 'dealer') {
-            return 'ディーラーの勝ちです。';
+        if ($result === []) {
+            return '引き分けです。';
         }
-        return '引き分けです。';
+        return "{$result[0]}の勝ちで{$result[1]}の負けです。";
     }
 }
