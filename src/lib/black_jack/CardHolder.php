@@ -19,4 +19,7 @@ interface CardHolder
 
     // 直前に加えたカードの情報を取得する
     public function getPreviousCard(): Card;
+
+    // 2枚目に引いたカードを宣言するかどうか
+    public function showSecondCard(string $secret): bool;
 }
