@@ -53,4 +53,13 @@ trait HandTrait
         $previousCard = end($this->hand);
         return $previousCard;
     }
+
+    // 2枚目に引いたカードを宣言するかどうか
+    public function showSecondCard(string $secret): bool
+    {
+        if ($secret === 'open') {
+            return true;
+        }
+        return false;
+    }
 }
