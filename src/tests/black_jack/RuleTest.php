@@ -23,7 +23,7 @@ class RuleTest extends TestCase
         $player->hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
         $rule = new Rule();
 
-        $this->assertSame('player', $rule->checkNotOverCloseTo21Points($dealer, $player));
+        $this->assertSame(['あなた', 'ディーラー'], $rule->checkNotOverCloseTo21Points($dealer, $player));
     }
     public function testCheckNotOverCloseTo21Points(): void
     {
@@ -34,7 +34,7 @@ class RuleTest extends TestCase
         $player->hand = [new Card('ハート', '2'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
         $rule = new Rule();
 
-        $this->assertSame('dealer', $rule->checkNotOverCloseTo21Points($dealer, $player));
+        $this->assertSame(['ディーラー', 'あなた'], $rule->checkNotOverCloseTo21Points($dealer, $player));
     }
     public function testLosePlayer(): void
     {
@@ -45,6 +45,6 @@ class RuleTest extends TestCase
         $player->hand = [new Card('ハート', '10'), new Card('スペード', '4'), new Card('クラブ', 'Q')];
         $rule = new Rule();
 
-        $this->assertSame('dealer', $rule->checkNotOverCloseTo21Points($dealer, $player));
+        $this->assertSame(['ディーラー', 'あなた'], $rule->checkNotOverCloseTo21Points($dealer, $player));
     }
 }
