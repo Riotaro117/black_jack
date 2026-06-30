@@ -22,15 +22,6 @@ class Dealer implements CardHolder
         return 'ディーラー';
     }
 
-    // ディーラーが2枚目に引いたカードを宣言するかどうか
-    public function whetherOrNotToGetSecondCard(string $secret): bool
-    {
-        if ($secret === 'open') {
-            return true;
-        }
-        return false;
-    }
-
     // 合計が17点以上になるまでカードを引き続ける
     public function keepDrawing(Deck $deck): void
     {
