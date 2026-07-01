@@ -6,10 +6,8 @@ require_once(__DIR__ . '/HandTrait.php');
 require_once(__DIR__ . '/CardHolder.php');
 require_once(__DIR__ . '/Player.php');
 
-class PlayerA extends Player implements CardHolder
+class PlayerA extends Player
 {
-    use HandTrait;
-
     // プレイヤーの名前を宣言する
     public function getMyName(): string
     {

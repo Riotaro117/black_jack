@@ -8,8 +8,6 @@ require_once(__DIR__ . '/PlayerCpu.php');
 
 class PlayerCpuSecond extends PlayerCpu
 {
-    use HandTrait;
-
     // プレイヤーの名前を宣言する
     public function getMyName(): string
     {
